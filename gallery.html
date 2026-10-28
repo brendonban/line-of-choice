@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Line of Choice Prototype Gallery</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .g-wrap { max-width: 1000px; margin: 0 auto; }
+  .g-hero { padding-top: clamp(48px, 8vw, 80px); }
+  .g-hero h1 { font-size: clamp(44px, 8vw, 92px); line-height: 1; letter-spacing: -.045em; font-weight: 700; margin: 0 0 24px; text-wrap: balance; }
+  .g-count { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--muted); padding-bottom: 14px; border-bottom: 2px solid var(--ink); margin-top: 48px; }
+  .g-list { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 14px; }
+  .g-card { display: block; text-decoration: none; border: 2px solid var(--rule); border-radius: 22px; padding: 22px 28px; transition: border-color .15s; }
+  .g-card:hover { border-color: var(--ink); }
+  .g-meta { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--muted); }
+  .g-meta .n { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; font-size: 13px; letter-spacing: .04em; }
+  .g-meta .dot { width: 14px; height: 14px; }
+  .g-card h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; margin: 14px 0 6px; }
+  .g-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+  .g-row p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+  .g-row .arr { color: var(--faint); font-size: 22px; flex: none; transition: transform .15s, color .15s; }
+  .g-card:hover .arr { color: var(--ink); transform: translateX(3px); }
+  @media (max-width: 560px) { .g-card { padding: 18px 18px; } }
+
+  .d-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 28px 0 18px; border-bottom: 1px solid var(--rule); }
+  .d-head { padding-top: 32px; }
+  .d-head h1 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -.035em; line-height: 1.05; font-weight: 700; margin: 10px 0 12px; text-wrap: balance; }
+  .d-head p { color: var(--muted); font-size: 18px; max-width: 40em; margin: 0; }
+  .frames { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 28px; margin-top: 36px; align-items: start; }
+  @media (max-width: 900px) { .frames { grid-template-columns: minmax(0, 1fr); } }
+  .frame { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .frame .cap { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+  .phone { width: 320px; max-width: 100%; border: 10px solid var(--ink); border-radius: 44px; overflow: hidden; background: #fff; position: relative; }
+  .desk { border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; background: #fff; position: relative; }
+  .desk .chrome { height: 30px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 6px; padding: 0 12px; background: var(--panel); }
+  .desk .chrome i { width: 9px; height: 9px; border-radius: 50%; background: #D9D9D9; }
+  .vp { position: relative; overflow: hidden; }
+  .vp iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #fff; }
+  .notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 40px; }
+  @media (max-width: 700px) { .notes { grid-template-columns: 1fr; } }
+  .notes ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+  .notes li { margin-bottom: 6px; }
+  .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; border-top: 2px solid var(--ink); padding-top: 18px; flex-wrap: wrap; }
+  .pager a { text-decoration: none; display: flex; flex-direction: column; gap: 2px; max-width: 48%; }
+  .pager a span { font-size: 13px; color: var(--muted); }
+  .pager a b { font-weight: 600; }
+  .pager a.next { text-align: right; margin-left: auto; }
+  .open-full { font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>Line of Choice</a>
+    <nav class="nav" aria-label="Gallery"><a href="#" aria-current="page" id="navAll">Prototype gallery</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="g-wrap" id="list">
+    <section class="g-hero">
+      <p class="eyebrow-q">“It wasn’t my fault.”</p>
+      <h1>Line of Choice</h1>
+      <p class="byline">A game by the <b>Emotional Health Project</b>. Prototype gallery.</p>
+      <p class="lede">Every screen of the game, one at a time. Open a screen to see how it looks on a phone and on a desktop, with sample answers.</p>
+    </section>
+    <div class="g-count"><span id="count"></span><span>tap one to see it on phone and desktop</span></div>
+    <ol class="g-list" id="cards"></ol>
+  </div>
+
+  <div class="g-wrap" id="detail" hidden>
+    <div class="d-top"><a href="#" class="btn sm">← All screens</a><a class="open-full" id="openFull" href="#" target="_blank" rel="noopener">Open this screen on its own ↗</a></div>
+    <div class="d-head">
+      <div class="g-meta"><span class="n"><span class="dot"></span><span id="dNum"></span></span><span id="dDate"></span></div>
+      <h1 id="dTitle"></h1>
+      <p id="dDesc"></p>
+    </div>
+    <div class="frames">
+      <div class="frame"><div class="cap"><span>Phone</span><span>390 × 844</span></div><div class="phone"><div class="vp" id="vpPhone"></div></div></div>
+      <div class="frame"><div class="cap"><span>Desktop</span><span>1280 × 800</span></div><div class="desk"><div class="chrome"><i></i><i></i><i></i></div><div class="vp" id="vpDesk"></div></div></div>
+    </div>
+    <div class="notes">
+      <div><p class="label">On this screen</p><ul id="dOn"></ul></div>
+      <div><p class="label">Sample answers shown</p><ul id="dSample"></ul></div>
+    </div>
+    <nav class="pager" id="pager" aria-label="Screens"></nav>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap"><span>Line of Choice prototype gallery · choice.ruangmalaysia.org</span><a href="index.html" class="muted">Open the live site</a></div></footer>
+
+<script>
+(() => {
+  const DATE = "28 Oct 2026";
+  const SCREENS = [
+    { id: "home", src: "index.html#demo-home", t: "Home", d: "choice.ruangmalaysia.org: the game in one line, and a dot to drag above the line.",
+      on: ["Drag the yellow dot above the line: the words flip from blame, defend, deny, justify to notice, own it, ask for help, choose again", "Play now leads straight into the game", "Links back to the Emotional Health Project at eh.ruangmalaysia.org", "“Need to talk now?” sits on every page"], sample: ["None. The dot starts below the line."] },
+    { id: "how", src: "index.html#demo-how", t: "How it works", d: "The line of choice, the quarter second and the levels, in three short ideas.",
+      on: ["Personal responsibility is never blame", "Credits Global Leadership Foundation’s guide", "Links to the Emotional Health Project workshops"], sample: ["None"] },
+    { id: "talk", src: "index.html#demo-talk", t: "Need to talk now?", d: "Free helplines, one tap from any screen.",
+      on: ["Befrienders KL 03-7627 2929, 24 hours", "Talian HEAL 15555, 8am to midnight", "Emergency 999", "Numbers are selectable text, so they work in any browser"], sample: ["None"] },
+    { id: "intro", src: "index.html#demo-intro", t: "Welcome and referral code", d: "A referral code, an age range and an anonymity note before anything is saved.",
+      on: ["Referral code is optional and fills itself from a ?ref= link", "The code is checked live against codes made in the admin console, and against friends’ share codes", "Consent is required; no names or contact details are asked for"], sample: ["Code UM-NOV (Universiti Malaya workshop)", "Age 21–24", "Consent ticked"] },
+    { id: "pre", src: "index.html#demo-pre", t: "Mood check-in", d: "“Out of 10, how am I really, today?” and four quick statements, before the game starts.",
+      on: ["Same check-in question as the workshop", "Four statements on a five-point scale: noticing autopilot, pausing, owning the response, reaching out", "These are asked again at check-out to show change"], sample: ["Mood 5", "Notice 3 · Pause 2 · Own 3 · Help 2"] },
+    { id: "care", src: "index.html#demo-care", t: "A gentle check", d: "Shown only when someone checks in at 3 or lower.",
+      on: ["Thanks them for being honest", "Lists the helplines before the game", "They can carry on whenever they’re ready"], sample: ["Shown for a check-in of 3 or less"] },
+    { id: "howto", src: "index.html#demo-howto", t: "How to play", d: "The rules on one card, then start running.",
+      on: ["Above the line earns 5× more XP", "Dodge clutter by switching sides", "Triggers pause time for the quarter second", "Head, heart and body orbs unlock Presence", "Observe slows everything for 3 seconds"], sample: ["None"] },
+    { id: "track", src: "index.html#demo-track", t: "The track", d: "The game keeps its original booklet look: a red line of choice, cut-paper flowers and a little runner who turns grey and frowns below the line.",
+      on: ["HUD: emotional health level and XP, Presence meter, streak, head/heart/body collected", "Clutter (17 unread, doomscroll) in either lane", "Tap above or below the line, swipe, or use the arrow keys"], sample: ["Level 4 Recognition, 620 XP", "Presence 72", "3 in a row, head and heart collected"] },
+    { id: "trigger", src: "index.html#demo-trigger", t: "The quarter second", d: "A trigger freezes the game. Pick the response that owns your part before autopilot does.",
+      on: ["18 everyday scenarios for young adults in Malaysia", "Two responses in random order", "The bar runs down; if it empties, autopilot picks the below-the-line response", "Choice, correctness and decision time are saved for the admin console"], sample: ["Trigger: “Your parents compare you with your cousin. Again.”"] },
+    { id: "levelup", src: "index.html#demo-levelup", t: "Level up", d: "XP moves the player up the emotional health levels, from 5 to 1.",
+      on: ["Each level shows a one-line description adapted from the guide", "Levels: Automated Response, Recognition, Social Value, Wisdom, Presence"], sample: ["Reaching Level 4, Recognition"] },
+    { id: "flow", src: "index.html#demo-flow", t: "Presence", d: "Collect head, heart and body for six seconds of Presence.",
+      on: ["2× XP", "Clutter bounces off", "A sunburst around the runner"], sample: ["4 seconds of Presence left"] },
+    { id: "summary", src: "index.html#demo-summary", t: "Run summary", d: "When Presence runs out: XP, level, time above the line and the last few triggers.",
+      on: ["Below-the-line choices show the above-the-line option next to them", "Run again, or finish and reflect", "Each run is saved to the session"], sample: ["1,480 XP, Level 3 Social Value", "67% of the time above the line", "3 of 4 triggers owned"] },
+    { id: "post", src: "index.html#demo-post", t: "Check-out", d: "The same check-in, plus “What will you choose next time?” and a recommend score.",
+      on: ["Mood out of 10 again", "The same four statements", "Optional open answer", "0–10 recommend score"], sample: ["Mood 7", "Notice 4 · Pause 3 · Own 4 · Help 3", "“Text my friend first instead of waiting.”", "Recommend 8"] },
+    { id: "done", src: "index.html#demo-done", t: "Results and invite", d: "Before and after, best run, and a share link that counts as a referral.",
+      on: ["Mood and statement averages, before and after", "Best XP and triggers owned across all runs", "Share link carries the player’s own code", "Start over for shared devices"], sample: ["Mood 5 → 7", "Statements 2.5 → 3.5", "Share code F7KQ2M"] },
+    { id: "support", src: "index.html#demo-support", t: "Support page", d: "The full support page, linked from the menu.",
+      on: ["Three helpline cards", "Reaching out framed as an above-the-line choice"], sample: ["None"] },
+    { id: "admin", src: "admin.html#demo", t: "Admin console", d: "Every session in one place: funnel, before and after, triggers, referral codes and answers.",
+      on: ["Password protected once deployed", "Filter by referral code, date and age", "Before-and-after chart for the four statements", "Trigger table, hardest first", "Create referral codes and copy their links", "Session list with full records, delete, and CSV export"], sample: ["68 invented sessions across three sample codes"] },
+  ];
+
+  const $ = id => document.getElementById(id);
+  $("count").textContent = SCREENS.length + " screens";
+  $("cards").innerHTML = SCREENS.map((s, i) => `<li><a class="g-card" href="#screen-${s.id}">
+    <div class="g-meta"><span class="n"><span class="dot"></span>${String(i + 1).padStart(2, "0")}</span><span>${DATE}</span></div>
+    <h2>${s.t}</h2><div class="g-row"><p>${s.d}</p><span class="arr" aria-hidden="true">⟶</span></div></a></li>`).join("");
+
+  function mount(vp, src, w, h) {
+    vp.innerHTML = "";
+    const f = document.createElement("iframe");
+    f.src = src; f.width = w; f.height = h; f.title = "Screen preview"; f.loading = "lazy";
+    f.style.width = w + "px"; f.style.height = h + "px";
+    vp.append(f);
+    const fit = () => { const s = vp.clientWidth / w; f.style.transform = `scale(${s})`; vp.style.height = (h * s) + "px"; };
+    fit(); new ResizeObserver(fit).observe(vp);
+  }
+
+  function route() {
+    const m = /^#screen-([a-z]+)$/.exec(location.hash);
+    const i = m ? SCREENS.findIndex(s => s.id === m[1]) : -1;
+    $("list").hidden = i >= 0; $("detail").hidden = i < 0;
+    window.scrollTo(0, 0);
+    if (i < 0) return;
+    const s = SCREENS[i];
+    $("dNum").textContent = String(i + 1).padStart(2, "0"); $("dDate").textContent = DATE;
+    $("dTitle").textContent = s.t; $("dDesc").textContent = s.d;
+    $("dOn").innerHTML = s.on.map(x => `<li>${x}</li>`).join("");
+    $("dSample").innerHTML = s.sample.map(x => `<li>${x}</li>`).join("");
+    $("openFull").href = s.src;
+    mount($("vpPhone"), s.src, 390, 844);
+    mount($("vpDesk"), s.src, 1280, 800);
+    const prev = SCREENS[i - 1], next = SCREENS[i + 1];
+    $("pager").innerHTML = (prev ? `<a href="#screen-${prev.id}"><span>← ${String(i).padStart(2, "0")}</span><b>${prev.t}</b></a>` : "") +
+      (next ? `<a class="next" href="#screen-${next.id}"><span>${String(i + 2).padStart(2, "0")} →</span><b>${next.t}</b></a>` : "");
+  }
+  $("navAll").addEventListener("click", e => { e.preventDefault(); location.hash = ""; });
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>

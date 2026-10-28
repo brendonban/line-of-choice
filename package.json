@@ -1,0 +1,7 @@
+{
+  "name": "line-of-choice",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "node dev-server.mjs" },
+  "engines": { "node": ">=18" }
+}

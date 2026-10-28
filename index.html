@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Line of Choice</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A short game about the quarter second between what happens and how you respond. By the Emotional Health Project, run by Ruang Malaysia.">
+<meta property="og:title" content="Line of Choice">
+<meta property="og:description" content="Notice the pull to blame, defend, deny or justify, and choose again. A short game by the Emotional Health Project.">
+<meta property="og:url" content="https://choice.ruangmalaysia.org/">
+<link rel="canonical" href="https://choice.ruangmalaysia.org/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/game.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#home"><span class="dot"></span>Line of Choice</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#play" data-page="play">Play</a>
+      <a href="#how" data-page="how">How it works</a>
+      <a href="#support" data-page="support">Support</a>
+      <a href="https://eh.ruangmalaysia.org" target="_blank" rel="noopener">Emotional Health Project ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="page wrap" id="p-home" data-page="home">
+    <p class="eyebrow-q">“It wasn’t my fault.”</p>
+    <h1 class="display">Line of Choice</h1>
+    <p class="byline">A game by the <a href="https://eh.ruangmalaysia.org" target="_blank" rel="noopener"><b>Emotional Health Project</b></a>. Run by Ruang Malaysia.</p>
+    <p class="lede">A short game about the quarter second between what happens and how you respond. Notice the pull to blame, defend, deny or justify, and choose again.</p>
+
+    <div class="loc" id="loc" aria-label="The line of choice. Drag the dot above the line.">
+      <div class="row above"><span>notice</span><span>own it</span><span>ask for help</span><span>choose again</span></div>
+      <div class="bar"></div>
+      <div class="bar-label">the line of choice</div>
+      <div class="row below"><span>blame</span><span>defend</span><span>deny</span><span>justify</span></div>
+      <div class="tether" id="locTether"></div>
+      <button class="knob" id="locKnob" aria-pressed="false" aria-label="Move the dot above or below the line"></button>
+      <div class="hint" id="locHint">drag me up</div>
+    </div>
+    <p class="loc-caption" id="locCaption"><b>Below the line.</b> Blame, defend, deny and justify are automatic, and human. Noticing them is the first step back up.</p>
+    <div class="btns">
+      <a class="btn solid" href="#play"><span class="dot sm"></span>Play now</a>
+      <a class="btn" href="#how">How it works</a>
+    </div>
+    <p class="hint-s" style="margin-top:18px">About 10 minutes, with a quick check-in before and after. Anonymous: no names or contact details.</p>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="page wrap" id="p-how" data-page="how" hidden>
+    <h2 class="title">How it works</h2>
+    <p class="lede">When someone cuts us off or criticises our work, we often blame, defend, deny or justify before we’ve had a chance to choose. The game lets you practise catching that moment.</p>
+    <div class="grid3">
+      <div class="tile"><span class="k">The line of choice</span><h3>Stay above the line</h3><p>Above it is personal responsibility: owning how you respond. Below it are the automatic reactions. Dropping below is normal; the aim is to notice and come back up.</p></div>
+      <div class="tile"><span class="k">The quarter second</span><h3>Triggers pause the game</h3><p>Everyday moments, like a teammate who hasn’t done their part, freeze time. Choose your response before autopilot chooses for you.</p></div>
+      <div class="tile"><span class="k">Emotional health levels</span><h3>Climb from 5 to 1</h3><p>You start at Level 5, Automated Response, where most of us live. XP moves you up through Recognition, Social Value and Wisdom to Presence.</p></div>
+    </div>
+    <div class="note"><span class="dot"></span><p style="margin:0">Personal responsibility is never blame. Nobody is responsible for becoming unwell. We can take responsibility for how we respond, and that includes asking for help.</p></div>
+    <p class="muted" style="margin-top:28px;max-width:42em">Line of Choice is based on Global Leadership Foundation’s guide to emotional health and leadership, and is part of the <a href="https://eh.ruangmalaysia.org" target="_blank" rel="noopener">Emotional Health Project</a> workshops.</p>
+    <div class="btns" style="margin-top:20px"><a class="btn solid" href="#play"><span class="dot sm"></span>Play now</a></div>
+  </section>
+
+  <!-- PLAY -->
+  <section class="page wrap" id="p-play" data-page="play" hidden>
+    <h2 class="title">Play</h2>
+    <div class="steps" id="steps" aria-label="Progress">
+      <span data-s="intro">Start</span><i></i><span data-s="pre">Check-in</span><i></i><span data-s="game">Play</span><i></i><span data-s="post">Check-out</span><i></i><span data-s="done">Results</span>
+    </div>
+
+    <!-- intro -->
+    <div class="panel" id="st-intro" hidden>
+      <form id="introForm" novalidate>
+        <div class="field">
+          <label for="refInput">Referral code <span class="muted" style="font-weight:400">(optional)</span></label>
+          <input class="input" id="refInput" name="ref" autocomplete="off" autocapitalize="characters" placeholder="e.g. UM-NOV" maxlength="24">
+          <span class="hint-s" id="refMsg">Got a code from your workshop or a friend? Enter it here.</span>
+        </div>
+        <div class="field">
+          <label for="ageInput">Your age</label>
+          <select class="input" id="ageInput" required></select>
+        </div>
+        <div class="field">
+          <label class="check"><input type="checkbox" id="consent" required> <span>I agree that my anonymous answers and game results can be used to improve these workshops. No names or contact details are collected.</span></label>
+        </div>
+        <p class="err-s" id="introErr" hidden></p>
+        <button class="btn solid" type="submit"><span class="dot sm"></span>Continue to check-in</button>
+      </form>
+    </div>
+
+    <!-- pre survey -->
+    <div class="panel" id="st-pre" hidden>
+      <form id="preForm" novalidate>
+        <div class="field"><span class="flabel">Out of 10, how am I really, today?</span><div class="mood" data-name="mood"></div><div class="mood-ends"><span>1 · not great</span><span>10 · really good</span></div></div>
+        <p class="label" style="margin:26px 0 4px">How true is each of these for you right now?</p>
+        <div data-items></div>
+        <p class="err-s" data-err hidden></p>
+        <div class="btns" style="margin-top:22px"><button class="btn solid" type="submit"><span class="dot sm"></span>Start the game</button></div>
+      </form>
+    </div>
+
+    <!-- low mood care -->
+    <div class="panel cream" id="st-care" hidden>
+      <h3>Thanks for being honest.</h3>
+      <p>If today feels heavy, you don’t have to carry it alone. You can talk to someone now, for free:</p>
+      <p><b>Befrienders KL</b> · <span style="user-select:all">03-7627 2929</span> · 24 hours<br><b>Talian HEAL</b> · <span style="user-select:all">15555</span> · 8am to midnight<br><b>Emergency</b> · <span style="user-select:all">999</span></p>
+      <div class="btns"><button class="btn solid" id="careGo"><span class="dot sm"></span>Continue to the game</button></div>
+    </div>
+
+    <!-- game: keeps the original booklet look -->
+    <div class="gskin" id="st-game" hidden>
+      <div class="g-head"><span class="g-title">Line <span>of</span> Choice</span><span class="g-sub">A personal-responsibility runner · based on the Emotional Health &amp; Leadership guide</span></div>
+      <div class="g-hud" aria-live="polite">
+        <div>
+          <div class="g-lbl"><span class="g-lvl" id="g-lvl">Level 5 · Automated Response</span><span id="g-xpt">0 XP</span></div>
+          <div class="g-bar"><i id="g-xpf"></i></div>
+        </div>
+        <div>
+          <div class="g-lbl"><span>Presence</span><span id="g-prt">100</span></div>
+          <div class="g-bar"><i id="g-prf" style="width:100%"></i></div>
+        </div>
+        <div class="g-chips">
+          <span class="g-chip" id="g-streak" title="Above-the-line choices in a row">×0 streak</span>
+          <span class="g-chip" title="Head, heart and body collected"><span class="g-centres" id="g-centres"><i class="h"></i><i class="t"></i><i class="b"></i></span><span id="g-flow" class="g-flow"></span></span>
+        </div>
+      </div>
+
+      <div class="stage" id="g-stage" tabindex="-1">
+        <canvas id="g-cv" aria-label="Game track: a runner on the red line of choice"></canvas>
+
+        <div class="ov" id="g-start">
+          <div class="g-card">
+            <h2>Stay above the line</h2>
+            <p>You start at Level 5, where most of us live: plenty of automatic responses. Run, earn XP, and climb the emotional health levels to Level 1, Presence.</p>
+            <ul>
+              <li><b>Above the red line</b> you earn 5× more XP. Dropping below is normal; staying there drains your presence.</li>
+              <li><b>Dodge the clutter</b> (pings, to-dos, doomscrolls) by switching sides: <kbd>↑</kbd> <kbd>↓</kbd>, swipe, or tap the top or bottom of the track.</li>
+              <li><b>Triggers</b> freeze time for the magic quarter second. Pick the response that takes personal responsibility with <kbd>1</kbd> <kbd>2</kbd> or a tap. Wait too long and your automatic response picks for you.</li>
+              <li><b>Collect head, heart and body</b> orbs. All three = Presence flow: 2× XP and clutter can’t touch you.</li>
+              <li><b>Inner observer</b> <kbd>O</kbd> slows the world for 3 seconds.</li>
+            </ul>
+            <button class="g-btn" id="g-go">Start running</button><span class="g-best" id="g-best"></span>
+          </div>
+        </div>
+
+        <div class="ov dim" id="g-choice" hidden>
+          <div class="g-card" role="dialog" aria-labelledby="g-scen">
+            <div class="g-eyebrow">Trigger · the magic quarter second</div>
+            <p class="g-scen" id="g-scen"></p>
+            <div class="g-timer"><i id="g-timer"></i></div>
+            <div class="g-opts">
+              <button class="g-opt" id="g-opt0"><b>1</b><span></span></button>
+              <button class="g-opt" id="g-opt1"><b>2</b><span></span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ov" id="g-over" hidden>
+          <div class="g-card">
+            <h2 id="g-over-title">Back on autopilot</h2>
+            <p id="g-over-msg"></p>
+            <div class="g-stats">
+              <div class="g-stat"><b id="g-s-xp">0</b><span>XP</span></div>
+              <div class="g-stat"><b id="g-s-lvl">5</b><span>Level reached</span></div>
+              <div class="g-stat"><b id="g-s-above">0%</b><span>Time above</span></div>
+              <div class="g-stat"><b id="g-s-ch">0/0</b><span>Owned it</span></div>
+            </div>
+            <ul class="g-review" id="g-review"></ul>
+            <button class="g-btn" id="g-finish">Finish and reflect</button><button class="g-btn alt" id="g-again">Run again</button>
+          </div>
+        </div>
+        <div class="g-toast" id="g-toast" style="opacity:0"></div>
+      </div>
+
+      <div class="g-ctrls">
+        <button class="g-ctrl" id="g-up" aria-label="Go above the line">▲ Above</button>
+        <button class="g-ctrl obs" id="g-obs">Observe</button>
+        <button class="g-ctrl" id="g-down" aria-label="Go below the line">▼ Below</button>
+      </div>
+      <p class="g-foot"><b>Levels</b> follow the guide’s nine-level model (adapted from Riso &amp; Hudson): you climb from 5 Automated Response to 4 Recognition, 3 Social Value, 2 Wisdom and 1 Presence. Below the line: blame, defend, deny, justify. Above it: personal responsibility for how you respond.</p>
+    </div>
+
+    <!-- post survey -->
+    <div class="panel" id="st-post" hidden>
+      <form id="postForm" novalidate>
+        <div class="field"><span class="flabel">Out of 10, how am I now?</span><div class="mood" data-name="mood"></div><div class="mood-ends"><span>1 · not great</span><span>10 · really good</span></div></div>
+        <p class="label" style="margin:26px 0 4px">How true is each of these for you now?</p>
+        <div data-items></div>
+        <div class="field" style="margin-top:22px"><label for="chooseNext">What will you choose next time? <span class="muted" style="font-weight:400">(optional)</span></label><textarea class="input" id="chooseNext" maxlength="600" placeholder="Next time someone… I will…"></textarea></div>
+        <div class="field"><span class="flabel">How likely are you to recommend this to a friend?</span><div class="mood rec" data-name="rec" data-from="0"></div><div class="mood-ends"><span>0 · not likely</span><span>10 · very likely</span></div></div>
+        <p class="err-s" data-err hidden></p>
+        <div class="btns"><button class="btn solid" type="submit"><span class="dot sm"></span>See my results</button><button class="btn" type="button" id="backToGame">Back to the game</button></div>
+      </form>
+    </div>
+
+    <!-- done -->
+    <div class="panel" id="st-done" hidden>
+      <h3>Thanks for playing</h3>
+      <p class="muted" id="doneMsg"></p>
+      <div class="compare" id="compare"></div>
+      <p class="label" style="margin:22px 0 8px">Invite a friend</p>
+      <div class="share"><code id="shareLink"></code><button class="btn sm" id="copyShare">Copy link</button></div>
+      <p class="hint-s" id="copyMsg" style="margin-top:6px">Your link has your code, <b id="shareCode"></b>. Nothing personal is shared.</p>
+      <p class="muted" style="margin-top:22px">Want to go deeper? The <a href="https://eh.ruangmalaysia.org" target="_blank" rel="noopener">Emotional Health Project</a> runs free workshops for young adults.</p>
+      <div class="btns" style="margin-top:18px"><button class="btn solid" id="playMore"><span class="dot sm"></span>Play again</button><button class="linkbtn" id="newSession">Start over as someone new (shared device)</button></div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="page wrap" id="p-support" data-page="support" hidden>
+    <h2 class="title">Support</h2>
+    <p class="lede">If you are struggling, reaching out is an above-the-line choice. These lines are free and confidential.</p>
+    <div class="lines">
+      <div class="line-card"><span class="label">Befrienders KL</span><span class="phone">03-7627 2929</span><span class="meta">24 hours, every day · befrienders.org.my</span></div>
+      <div class="line-card"><span class="label">Talian HEAL</span><span class="phone">15555</span><span class="meta">8am to midnight, every day · Ministry of Health</span></div>
+      <div class="line-card"><span class="label">Emergency</span><span class="phone">999</span><span class="meta">If you or someone else is in danger right now</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot"><div class="wrap"><span>Line of Choice · a game by the <a href="https://eh.ruangmalaysia.org" target="_blank" rel="noopener">Emotional Health Project</a> · Run by Ruang Malaysia</span><a href="admin.html" class="muted">Admin</a></div></footer>
+
+<button class="talk" id="talkBtn" aria-expanded="false" aria-controls="talkSheet"><span class="dot"></span>Need to talk now?</button>
+<div class="sheet" id="talkSheet" hidden role="dialog" aria-labelledby="talkTitle">
+  <button class="x" id="talkClose" aria-label="Close">×</button>
+  <h3 id="talkTitle">You don’t have to wait.</h3>
+  <p>Free, confidential, and someone will listen.</p>
+  <div class="hl"><span>Befrienders KL · 24 hours</span><b>03-7627 2929</b></div>
+  <div class="hl"><span>Talian HEAL · 8am–midnight</span><b>15555</b></div>
+  <div class="hl"><span>Emergency</span><b>999</b></div>
+</div>
+
+<script src="assets/content.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/game.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
